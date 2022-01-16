@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html xmlns:th="https://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="layouts/defaultTemplate">
+<head>
+<style>
+	body {
+		font-family: 'Montserrat', sans-serif; 
+		line-height: 1.4;
+		font-size: 16px;
+	}
+	form {
+		border: 3px solid #ccc;
+		padding: 20px;
+	}
+	input[type=text], input[type=password] {
+		width: 100%;
+		padding: 12px 20px;
+		margin: 8px 0px;
+		display: inline-block;
+		border: 1px solid #ccc;
+		box-sizing: border-box;
+		border-radius: 4px;
+		transition: all .5s ease;
+	}
+	input[type=text]:focus, input[type=password]:focus {
+		border-radius: 0px;
+		border: 1px solid #04aa6d;
+		outline: 0px solid #000;
+	}
+	button {
+		background-color: #04aa6d;
+		color: #fff;
+		padding: 14px 20px;
+		margin: 8px 0;
+		border: none;
+		cursor: pointer;
+		width: 100%;
+		border-radius: 3px;
+		transition: all .5s ease;
+	}
+	button:hover {
+		opacity: .8;
+	}
+	.cancelbtn {
+		width: auto;
+		padding: 10px 18px;
+		background-color: #f44336;
+	}
+	.container {
+		padding: 16px;
+		text-align: left;
+		max-width: 1200px;
+	}
+	span.psw {
+		float: right;
+		padding-top: 16px;
+	}
+	.fieldError {
+		color: red;
+		padding: 20px;
+	}
+	.heroImg {
+		width: 100%;
+		height: 300px;
+		background: url("/img/vacationBgrnd.jpg");
+		background-repeat: no-repeat;
+		background-attachment: fixed;
+		background-position: center;
+		background-size: cover;
+		display: flex;
+		justify-content: flex-start;
+		align-items: center;
+		padding: 20px;
+	}
+	.heroText {
+		padding: 30px 50px;
+		background-color: rgba(0,0,0,.7);
+		color: white;
+		font-size: 32px;
+		display: inline;
+	}
+</style>
+</head>
+	<body>
+	<div layout:fragment="content">
+	<div class="heroImg">
+	<div class="container">
+		<h2 class="heroText">Login</h2>
+	</div>
+	</div>
+		<form action="#" th:action="@{doLogin}" th:object="${userModel}" method="post">			
+			<div class="container">
+				<label for="uname"><b>Username</b></label>
+				<input type="text" th:field="*{username}" placeholder="Enter username" name="uname" required>
+				<div class="fieldError">
+					<p th:if="${#fields.hasErrors('username')}" th:errors="*{username}">User Name Error</p>
+				</div>
+				
+				<label for="psw"><b>Password</b></label>
+				<input type="password" th:field="*{password}" placeholder="Enter password" name="psw" required>
+				<div class="fieldError">
+					<p th:if="${#fields.hasErrors('password')}" th:errors="*{password}">Password Error</p>
+				</div>
+				
+				<button type="submit">Login</button>
+			</div>
+			
+			<div class="container" style="background-color: #ddd;">
+				<button type="button" class="cancelbtn">Cancel</button>
+				<span class="psw">Forgot <a href="#">password?</a></span>
+			</div>
+		<div th:if="${#fields.hasErrors('*')}">List of Errors</div>
+		<div th:each="err : ${#fields.errors('*')}">
+			<span th:text="${err}" class="fieldError">
+		</div>
+		</form>
+	</div>
+	</body>
+</html>

@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="layouts/defaultTemplate">
+<head> 
+<style>
+body {
+		font-family: 'Montserrat', sans-serif; 
+		line-height: 1.4;
+		font-size: 16px;
+	}
+	button {
+		background-color: #04aa6d;
+		color: #fff;
+		padding: 14px 20px;
+		margin: 8px 0;
+		border: none;
+		cursor: pointer;
+		width: 100%;
+		border-radius: 3px;
+		transition: all .5s ease;
+	}
+	button:hover {
+		opacity: .8;
+	}
+	.container {
+		padding: 16px;
+		text-align: left;
+		max-width: 1200px;
+	}
+	.heroImg {
+		width: 100%;
+		height: 300px;
+		background: url("/img/vacationBgrnd.jpg");
+		background-repeat: no-repeat;
+		background-attachment: fixed;
+		background-position: center;
+		background-size: cover;
+		display: flex;
+		justify-content: flex-start;
+		align-items: center;
+		padding: 20px;
+	}
+	.heroText {
+		padding: 30px 50px;
+		background-color: rgba(0,0,0,.7);
+		color: white;
+		font-size: 32px;
+		display: inline;
+	}
+	table {
+		border: 2px solid black;
+		border-collapse: collapse;
+		padding: 2px;
+		width: 100%;
+	}
+	tr {
+		padding: 5px;
+		border-bottom: 1px solid black;
+		background: transparent;
+		color: black;
+	}
+	tr:hover {
+		background: #ccc !important;
+	}
+	th, th:hover {
+		text-align: center;
+		font-weight: 700;
+		background: #000 !important;
+		color:white !important;
+	}
+	tr:nth-child(2n) {
+		background: #efefef;
+	}
+	td, th {
+		padding: 8px;
+	}
+	input {
+		max-width: 180px;
+	}
+</style>
+</head>
+<!--Models used in this page:1. SearchModel.searchTerm is a string2. 
+orders is an arraylist of type ProductModel-->
+<body>
+<div layout:fragment="content">
+	<div class="heroImg">
+		<div class="container">
+			<h2 class="heroText">Admin - Users</h2>
+		</div>
+	</div>
+	<div class="container">
+    <table>
+        <tr>
+            <th>ID</th>
+			<th>Username</th>
+			<th>First Name</th>
+			<th>Last Name</th>
+			<th>Email</th>
+			<th>Phone</th>
+			<th>Role</th>
+            <th>Update</th>
+            <th>Delete</th>
+        </tr>
+        <tr th:each="user : ${users}">
+			<td th:text="${user.id}"></td>
+			<td th:text="${user.username}"></td>
+			<!-- th:field="*{firstname}" -->
+			<form action="#" th:action="@{/main/update/}" th:object="${user}" method="post">
+			    <input name="id" type="hidden" th:value="${user.id}">
+                <input name="username" type="hidden" th:value="${user.username}"> 
+				<td><input th:value="${user.firstname}" name="firstname"></td>
+				<td><input th:value="${user.lastname}" name="lastname"></td>
+				<td><input th:value="${user.email}" name="email"></td>
+				<td><input th:value="${user.phone}" name="phone"></td>
+				<!-- <td><input th:value="${user.roles}" th:field="*{roles}" name="roles"></td> -->
+				<!-- https://frontbackend.com/thymeleaf/how-to-implement-if-else-in-thymeleaf-with-spring-boot -->
+				<td>
+					<div>
+  						<input type="radio" id="user" name="roles" value="USER" th:checked="${user.roles == 'USER'} ? 'checked'">
+  						<label for="user">User</label>
+					</div>
+
+					<div>
+  						<input type="radio" id="admin" name="roles" value="ADMIN" th:checked="${user.roles == 'ADMIN'} ? 'checked'">
+  						<label for="admin">Admin</label>
+					</div>
+				</td>
+				<td>
+					<button class="btn btn-success" type="submit" name="updateItem">OK</button>
+				</td>
+            </form>
+            <td>
+                <form action="#" th:action="@{/main/delete/}" th:object="${user}" method="post"> 
+                    <input name="id" type="hidden" th:value="${user.id}">
+                    <input name="username" type="hidden" th:value="${user.username}"> 
+                    <input name="password" type="hidden" th:value="${user.password}"> 
+                    <input name="firstname"type="hidden" th:value="${user.firstname}"> 
+                    <input name="lastname"type="hidden" th:value="${user.lastname}">
+                    <input name="email" type="hidden" th:value="${user.email}">
+                    <input name="phone" type="hidden"  th:value="${user.phone}">
+                    <input name="roles" type="hidden"  th:value="${user.roles}">
+                    
+                    <button class="btn btn-danger" type="submit" name="deleteItem">X</button>
+                </form></td>
+        </tr> 
+    </table>
+    </div>
+</div>
+</body>
+</html>

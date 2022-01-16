@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html xmlns:th="https://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="layouts/defaultTemplate">
+<head>
+<style>
+body {
+		font-family: 'Montserrat', sans-serif; 
+		line-height: 1.4;
+		font-size: 16px;
+	}
+	form {
+		border: 3px solid #ccc;
+		padding: 20px;
+	}
+	input[type=text], input[type=password] {
+		width: 100%;
+		padding: 12px 20px;
+		margin: 8px 0px;
+		display: inline-block;
+		border: 1px solid #ccc;
+		box-sizing: border-box;
+		border-radius: 4px;
+		transition: all .5s ease;
+	}
+	input[type=text]:focus, input[type=password]:focus {
+		border-radius: 0px;
+		border: 1px solid #04aa6d;
+		outline: 0px solid #000;
+	}
+	button {
+		background-color: #04aa6d;
+		color: #fff;
+		padding: 14px 20px;
+		margin: 8px 0;
+		border: none;
+		cursor: pointer;
+		width: 100%;
+		border-radius: 3px;
+		transition: all .5s ease;
+	}
+	button:hover {
+		opacity: .8;
+	}
+	.cancelbtn {
+		width: auto;
+		padding: 10px 18px;
+		background-color: #f44336;
+	}
+	.imgcontainer {
+		text-align: center;
+		padding: 24px 0 12px 0;
+	}
+	img.avatar {
+		width: 40%;
+		max-width:150px;
+		border-radius: 50%;
+	}
+	.container {
+		padding: 16px;
+		text-align: left;
+		max-width: 1200px;
+	}
+	.fieldError {
+		color: red;
+	}
+	.errorTitle {
+		margin-bottom: 10px;
+		font-weight: 600;
+	}
+	.errors {
+		padding: 20px;
+		text-align: center !important;
+	}
+	.heroImg {
+		width: 100%;
+		height: 300px;
+		background: url("/img/vacationBgrnd.jpg");
+		background-repeat: no-repeat;
+		background-attachment: fixed;
+		background-position: center;
+		background-size: cover;
+		display: flex;
+		justify-content: flex-start;
+		align-items: center;
+		padding: 20px;
+	}
+	.heroText {
+		padding: 30px 50px;
+		background-color: rgba(0,0,0,.7);
+		color: white;
+		font-size: 32px;
+		display: inline;
+	}
+</style>
+</head>
+	<body>
+	<div layout:fragment="content">
+	<div class="heroImg">
+	<div class="container">
+		<h2 class="heroText">Create Vacation Package</h2>
+	</div>
+	</div>
+		<form action="#" th:action="@{/products/createPackage}" th:object="${productModel}" method="post">
+			
+			<div class="container">
+				<label for="vacationName"><b>Vacation Name</b></label>
+				<input type="text" th:field="*{vacationName}" name="vacationName" required>
+				<div class="fieldError">
+					<p th:if="${#fields.hasErrors('vacationName')}" th:errors="*{vacationName}">Product Name Error</p>
+				</div>
+				
+				<label for="price"><b>Price</b></label>
+				<input type="text" th:field="*{price}" name="price" required>
+				<div class="fieldError">
+					<p th:if="${#fields.hasErrors('price')}" th:errors="*{price}">Price Error</p>
+				</div>
+				
+				<label for="details"><b>Details</b></label>
+				<input type="text" th:field="*{details}" name="details" required>
+				<div class="fieldError">
+					<p th:if="${#fields.hasErrors('details')}" th:errors="*{details}">Details Error</p>
+				</div>
+				
+				<label for="location"><b>Location</b></label>
+				<input type="text" th:field="*{location}" name="location" required>
+				<div class="fieldError">
+					<p th:if="${#fields.hasErrors('location')}" th:errors="*{location}">Location Error</p>
+				</div>
+				
+				<label for="availability"><b>Availability</b></label>
+				<input type="text" th:field="*{availability}" name="availability" required>
+				<div class="fieldError">
+					<p th:if="${#fields.hasErrors('availability')}" th:errors="*{availability}">Availability Error</p>
+				</div>
+				
+				<label for="contact"><b>Contact Info</b></label>
+				<input type="text" th:field="*{contact}" name="contact" required>
+				<div class="fieldError">
+					<p th:if="${#fields.hasErrors('contact')}" th:errors="*{contact}">Contact Error</p>
+				</div>
+				
+				<label for="contact"><b>Image</b></label>
+				<input type="text" th:field="*{image}" name="image">
+				
+				<button type="submit">Create Package</button>
+				<div class="errors">
+					<div class="errorTitle" th:if="${#fields.hasErrors('*')}">List of Errors</div>
+					<div th:each="err : ${#fields.errors('*')}">
+						<span th:text="${err}" class="fieldError">
+					</div>
+				</div>	
+				
+			</div>
+		</form>
+	</div>
+	</body>
+</html>

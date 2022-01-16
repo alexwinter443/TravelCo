@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="layouts/defaultTemplate">
+<head> 
+<style>
+body {
+		font-family: 'Montserrat', sans-serif; 
+		line-height: 1.4;
+		font-size: 16px;
+	}
+	button {
+		background-color: #04aa6d;
+		color: #fff;
+		padding: 14px 20px;
+		margin: 8px 0;
+		border: none;
+		cursor: pointer;
+		width: 100%;
+		border-radius: 3px;
+		transition: all .5s ease;
+	}
+	button:hover {
+		opacity: .8;
+	}
+	.container {
+		padding: 16px;
+		text-align: left;
+		max-width: 1200px;
+	}
+	.heroImg {
+		width: 100%;
+		height: 300px;
+		background: url("/img/vacationBgrnd.jpg");
+		background-repeat: no-repeat;
+		background-attachment: fixed;
+		background-position: center;
+		background-size: cover;
+		display: flex;
+		justify-content: flex-start;
+		align-items: center;
+		padding: 20px;
+	}
+	.heroText {
+		padding: 30px 50px;
+		background-color: rgba(0,0,0,.7);
+		color: white;
+		font-size: 32px;
+		display: inline;
+	}
+	table {
+		border: 2px solid black;
+		border-collapse: collapse;
+		padding: 2px;
+	}
+	tr {
+		padding: 5px;
+		border-bottom: 1px solid black;
+		background: transparent;
+		color: black;
+	}
+	tr:hover {
+		background: #ccc !important;
+	}
+	th, th:hover {
+		text-align: center;
+		font-weight: 700;
+		background: #000 !important;
+		color:white !important;
+	}
+	tr:nth-child(2n) {
+		background: #efefef;
+	}
+	td, th {
+		padding: 8px;
+	}
+</style>
+</head>
+<!--Models used in this page:1. SearchModel.searchTerm is a string2. 
+orders is an arraylist of type ProductModel-->
+<body>
+<div layout:fragment="content">
+	<div class="heroImg">
+		<div class="container">
+			<h2 class="heroText">Admin - Vacation Packages</h2>
+		</div>
+	</div>
+	<div class="container">
+    <table>
+        <tr>
+            <th>ID</th>
+			<th>Name</th>
+			<th>Price</th>
+			<th>Location</th>
+			<th>Details</th>
+			<th>Availability</th>
+			<th>Contact</th>
+            <th>Update</th>
+            <th>Delete</th>
+        </tr>
+        <tr th:each="product : ${products}">
+			<td th:text="${product.id}"></td>
+			<td th:text="${product.vacationName}"></td>
+			<td th:text="${product.price}"></td>
+			<td th:text="${product.location}"></td>
+			<td th:text="${product.details}"></td>
+			<td th:text="${product.availability}"></td>
+			<td th:text="${product.contact}"></td>
+			<td>
+                <form action="#" th:action="@{/products/editForm/}" th:object="${product}" method="post"> 
+                    <input name="id" type="hidden" th:value="${product.id}"> 
+                    <input name="vacationName" type="hidden" th:value="${product.vacationName}"> 
+                    <input name="price" type="hidden" th:value="${product.price}">
+                    <input name="location" type="hidden" th:value="${product.location}">
+                    <input name="details" type="hidden"  th:value="${product.details}">
+                    <input name="availability" type="hidden"  th:value="${product.availability}">
+                    <input name="contact" type="hidden"  th:value="${product.contact}">
+                    <input name="image" type="hidden" th:value="${product.image}"> 
+                    <button class="btn btn-success" type="submit" name="editItem">OK</button>
+                </form>
+            </td>
+            <td>
+                <form action="#" th:action="@{/products/delete/}" th:object="${product}" method="post"> 
+                    <input name="id" type="hidden" th:value="${product.id}"> 
+                    <input name="vacationName"type="hidden" th:value="${product.vacationName}"> 
+                    <input name="price"type="hidden" th:value="${product.price}">
+                    <input name="location" type="hidden" th:value="${product.location}">
+                    <input name="details" type="hidden"  th:value="${product.details}">
+                    <input name="availability" type="hidden"  th:value="${product.availability}">
+                    <input name="contact" type="hidden"  th:value="${product.contact}">
+                    
+                    <button class="btn btn-danger" type="submit" name="deleteItem">X</button>
+                </form></td>
+        </tr> 
+    </table>
+    </div>
+</div>
+</body>
+</html>
