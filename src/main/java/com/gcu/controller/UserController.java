@@ -29,7 +29,6 @@ import com.gcu.model.UserModel;
  */
 
 @Controller
-@RequestMapping("/main")
 public class UserController {
 	
 	// DEPENDENCY INJECTION
@@ -40,7 +39,7 @@ public class UserController {
 	ProductBusinessServiceInterface productService;
 	
 	// home route
-	@GetMapping("/home")
+	@GetMapping("/")
 	public String homePage(Model model) {
 		// Display Login Form View
 		model.addAttribute("title", "Vacation Site");
