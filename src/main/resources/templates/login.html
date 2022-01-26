@@ -87,7 +87,7 @@
 		<h2 class="heroText">Login</h2>
 	</div>
 	</div>
-		<form action="#" th:action="@{/login}" th:object="${userModel}" method="post">			
+		<form action="#" th:action="@{/doLogin}" th:object="${userModel}" method="post">			
 			<div class="container">
 				<label for="uname"><b>Username</b></label>
 				<input type="text" th:field="*{username}" placeholder="Enter username" name="username" required>
