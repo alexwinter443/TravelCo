@@ -17,9 +17,8 @@
         <li sec:authorize="!isAuthenticated()" class="nav-item">
           <a class="nav-link" href="#" th:href="@{/login}">Login</a>
         </li>
-        <li sec:authorize="hasAnyAuthority('ADMIN','NORMAL')" class="nav-item">
+        <li sec:authorize="isAuthenticated()" class="nav-item">
           <a class="nav-link" href="#" th:href="@{/products/all}">View All</a>
-          <!-- <a class="nav-link" href="/products/all">View All</a> -->
         </li>
         <li sec:authorize="hasAnyAuthority('ADMIN','NORMAL')" class="nav-item">
           <a class="nav-link" href="#" th:href="@{/products/searchForm}">Search</a>

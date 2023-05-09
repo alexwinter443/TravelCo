@@ -9,10 +9,9 @@ import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
-import org.springframework.security.crypto.password.NoOpPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
-
 import com.gcu.business.UsersBusinessService;
+
 
 /*
  * Kacey Morris and Alex Vergara
@@ -24,18 +23,18 @@ import com.gcu.business.UsersBusinessService;
 @EnableWebSecurity
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
 	// to hash passwords
-	@Autowired
-	PasswordEncoder passwordEncoder;
+	//@Autowired
+	//PasswordEncoder passwordEncoder;
 	
 	// to manipulate the users
 	@Autowired
 	UsersBusinessService service;
 	
 	// to hash passwords
-	@Bean
-	BCryptPasswordEncoder passwordEncoder() {
-		return new BCryptPasswordEncoder();
-	}
+	//@Bean
+	//BCryptPasswordEncoder passwordEncoder() {
+		//return new BCryptPasswordEncoder();
+	//}
 	
 	// security configurations
 	@Override
@@ -45,14 +44,12 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 			.authorizeRequests()
 			// put most restricted pages first. Only ADMIN can add, delete, or edit products
 			// THIS DOES NOT WORK
-//			.antMatchers("/products/admin").hasAnyRole("ADMIN")
-//			.antMatchers("/products/createProduct").hasAnyRole("ADMIN")
 			
 			// WORKING ALTERNATIVE
 			// https://stackoverflow.com/questions/30788105/spring-security-hasrole-not-working
 			.antMatchers("/products/admin").hasAuthority("ADMIN")
-			.antMatchers("/main/admin").hasAuthority("ADMIN")
-			.antMatchers("/products/createProduct").hasAuthority("ADMIN")
+			.antMatchers("/admin").hasAuthority("ADMIN")
+			//.antMatchers("/products/createProduct").hasAuthority("ADMIN")
 			
 			
 			// settings for the API, only admin can add a new role, update, and delete
@@ -63,17 +60,17 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 			// only authenticated users can access the api
 			.antMatchers("/api/**").authenticated()
 			// only authenticated users can access the products
-			.antMatchers("/products/**").authenticated()
+			//.antMatchers("/products/**").authenticated()
 			
 			// allow non logged in users to see the login page, register page, and image folders
-			.antMatchers("/main/login", "/main/register", "/img/**").permitAll()
+			.antMatchers("/login", "/main/register", "/img/**").permitAll()
 			.and()
 			.httpBasic()
 			.and()
 			.formLogin()
 			// added to specify login form
 			// used the URL that is served by the login controller
-			.loginPage("/main/login")
+			.loginPage("/login")
 				
 			// match the text input fields on the login form
 			.usernameParameter("username")
@@ -87,21 +84,21 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 			.and()
 			.csrf().ignoringAntMatchers("/api/**");
 	}
-	
-	// @SuppressWarnings("deprecation")
-	// encrypt the passwords
-	@Override
-	public void configure(AuthenticationManagerBuilder auth) throws Exception {
-		String password = new BCryptPasswordEncoder().encode("123");
-		// for entering the encrypted value into the database
-		// extend to registration?
-		System.out.println("== Encrypted value of 123 ===== " + password + " ==");
-		auth
-		.userDetailsService(service)
-		.passwordEncoder(passwordEncoder);
-		// this works V
-//		auth.inMemoryAuthentication().passwordEncoder(NoOpPasswordEncoder.getInstance())
-//			.withUser("thisisatest").password("123").roles("ADMIN").and()
-//			.withUser("anothertest").password("123").roles("USER");
-	}
+//	
+//	// @SuppressWarnings("deprecation")
+//	// encrypt the passwords
+//	@Override
+//	public void configure(AuthenticationManagerBuilder auth) throws Exception {
+//		String password = new BCryptPasswordEncoder().encode("123");
+//		// for entering the encrypted value into the database
+//		// extend to registration?
+//		System.out.println("== Encrypted value of 123 ===== " + password + " ==");
+//		auth
+//		.userDetailsService(service);
+//		//.passwordEncoder(passwordEncoder);
+//		// this works V
+////		auth.inMemoryAuthentication().passwordEncoder(NoOpPasswordEncoder.getInstance())
+////			.withUser("thisisatest").password("123").roles("ADMIN").and()
+////			.withUser("anothertest").password("123").roles("USER");
+//	}
 }

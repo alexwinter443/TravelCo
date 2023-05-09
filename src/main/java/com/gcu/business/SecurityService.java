@@ -32,6 +32,7 @@ public class SecurityService implements SecurityServiceInterface{
 		int result = usersDAO.getUsersByUsername(loginModel.getUsername(), loginModel.getPassword());
 		
 		System.out.println("in the is authenticated method in the security service.");
+		System.out.println("result : " + result);
 		
 		// successful login ; ie returns true
 		if(result > 0) {
@@ -39,9 +40,9 @@ public class SecurityService implements SecurityServiceInterface{
 			return true;
 		}
 		// checks for registered user using cookies
-		else if(loginModel.getUsername().equals(username) && loginModel.getPassword().equals(password)) {
-			return true;
-		}
+//		else if(loginModel.getUsername().equals(username) && loginModel.getPassword().equals(password)) {
+//			return true;
+//		}
 		// user not found
 		else {
 			return false;

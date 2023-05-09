@@ -34,14 +34,14 @@ public class UserDataService {
 	public int getUsersByUsername(String username, String password)
 	{
 		System.out.println("OLD user data service getting user by username");
-		String sql = "SELECT COUNT(*) FROM users where username = ?";
+		String sql = "SELECT COUNT(*) FROM users where USERNAME = ?";
 		return jdbcTemplate.queryForObject("SELECT COUNT(*) FROM users where username = ? and password = ?", new Object[]{username, password}, Integer.class);
 
 	}
 	
 	// NOTE CHANGED FROM USERMODEL TO USERENTITY
 	public UserEntity findByUsername(String username) {
-		System.out.println("OLD user data service find by username");
+		System.out.println("OLD user data service find by username userEntity");
 		// query but easier with jdbc
 		UserEntity result = jdbcTemplate.queryForObject("SELECT ID, USERNAME, PASSWORD, ROLE FROM users WHERE USERNAME = ?", 
 				new UsersMapper(),

@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.CookieValue;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.servlet.ModelAndView;
 
 import com.gcu.business.ProductBusinessServiceInterface;
 import com.gcu.business.SecurityServiceInterface;
@@ -62,12 +63,13 @@ public class UserController {
 	}
 	
 	@PostMapping("/doLogin")
-	public String doLogin(@Valid UserEntity loginModel, BindingResult bindingResult, Model model) {
+	public ModelAndView doLogin(@Valid UserEntity loginModel, BindingResult bindingResult, Model model) {
 		// check for errors
 		if (bindingResult.hasErrors()) {
 			model.addAttribute("title", "Login Form");
-			return "login";
+			return new ModelAndView("redirect:/products/all");
 		}
+		System.out.println("My current user model: " + loginModel.getUsername() + loginModel.getPassword());
 		// authenticate the user
 		UserModel uModel = new UserModel(loginModel.getUsername(), loginModel.getPassword());
 		boolean success = securityService.isAuthenticated(uModel, uModel.getUsername(), uModel.getPassword());
@@ -76,11 +78,15 @@ public class UserController {
 		if (success) {
 			// send a user entity for roles
 			model.addAttribute("userModel", loginModel);
-			return "LoginSuccess";
+			//return new ModelAndView("redirect:/myURL");
+			//return "productsImages";
+			return new ModelAndView("redirect:/products/all");
+			
 		}
 		else {
 			// login failed, return login form
-			return "login";
+			//return "login";
+			return new ModelAndView("redirect:/myURL");
 		}
 	}	
 	
@@ -104,9 +110,9 @@ public class UserController {
 		}
 		
 		// encode password before registering user
-		BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
-		String ecodedPsw = passwordEncoder.encode(userModel.getPassword());
-		userModel.setPassword(ecodedPsw);
+		//BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
+		//String ecodedPsw = passwordEncoder.encode(userModel.getPassword());
+		//userModel.setPassword(ecodedPsw);
 		
 		// NOTE CHANGED USERMODEL TO USERENTITY
 		// register user and track them with cookies

@@ -49,7 +49,7 @@ public class UsersBusinessService implements UserDetailsService {
 			authorities.add(new SimpleGrantedAuthority(user.getRole()));
 			// make sure admin can also access user pages
 			if (user.getRole().equals("ADMIN")) {
-				authorities.add(new SimpleGrantedAuthority("USER"));
+				authorities.add(new SimpleGrantedAuthority("NORMAL"));
 			}
 			// ensure this is working
 			System.out.println("Authorities ========== " + authorities.get(0) + " " + authorities);
