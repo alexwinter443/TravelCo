@@ -69,7 +69,8 @@
 
 ### User Authentication and Security: Handling password storage securely in spring security was challenging at first.
 
-
+## Outstanding Issues
+### Azure deployment had to be halted due to high cost for maintenance.
 
 
 
