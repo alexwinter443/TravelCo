@@ -63,6 +63,12 @@
 
 ### Collaborated on a team using version control and communicated effectively
 
+## Risks and Challenges
+
+### Balancing project development with other comittments and responsibiites was challenging but doable.
+
+### User Authentication and Security: Handling password storage securely in spring security was challenging at first.
+
 
 
 
