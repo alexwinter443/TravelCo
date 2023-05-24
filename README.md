@@ -57,7 +57,13 @@
 
 ## What I learned
 
-### 
+### Gained experience in initial project planning, setting requirements, creating wireframes, and developing UML Diagrams.
+
+### Gained a deeper understanding of the Spring Boot Framework
+
+### Collaborated on a team using version control and communicated effectively
+
+
 
 
 
