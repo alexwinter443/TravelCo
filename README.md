@@ -1,6 +1,6 @@
-# This is the Repository for Alex Vergara's VacationCo project.
+# This is the Repository for Alex Vergara's VacationCo. project.
 
-## VacationCo is a vacation planning web application.
+## VacationCo. is a vacation planning web application.
 
 ## *Travellers often need help with transportation, accomodation, activities, meals and other services when travelling abroad. Vacation Co. helps people save time and effort on trips and makes travelling easier*
 
@@ -29,5 +29,29 @@
 ### 4. Users can search for vacation packages
 
 ### 5. Vacation packages 
+
+## Non-functional requirements for Vacation Co.
+
+### user friendly and modern design
+
+### enhance security
+
+# Vacation Co. is built using Java, Spring Boot, Thymelead, and CSS
+
+> I wanted to incorporate a front end framework but due to time constraints was limited in implementing it.
+
+## Object oriented programming and N Layer Architecture rules were followed.
+
+## Vacation Co. was deployed to Heroku, AWS, and Azure
+
+# Project Diagrams
+
+## High Level Design Sitemap
+![image](https://github.com/alexwinter443/TravelCo/assets/59127575/42901d7a-7ea3-4a5f-91bd-91df97db87fe)
+
+
+
+
+
 
 
