@@ -10,4 +10,24 @@
 # Home Page
 ![image](https://github.com/alexwinter443/TravelCo/assets/59127575/4098921b-a429-4518-b51b-7a8e2ba74c31)
 
+# Vacation page
+![image](https://github.com/alexwinter443/TravelCo/assets/59127575/e73e3ee6-b2b6-424c-a326-608a86636728)
+
+# Search Tool
+![image](https://github.com/alexwinter443/TravelCo/assets/59127575/b5b53dcd-3878-4a1e-828f-a33be7fccce3)
+
+# Requirements
+
+## Functional Requirements set for Vacation Co.
+
+### Users can login and register
+
+### Admin can create, read, update, delete vacation packages
+
+### Users can view vacation packages
+
+### Users can search for vacation packages
+
+### Vacation packages 
+
 
