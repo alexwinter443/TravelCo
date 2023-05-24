@@ -51,7 +51,7 @@
 
 
 # Key Technical Design Decisions:
-## I decided to use the Spring Boot framework for this project. This decision was made by the class requirements, but will be optimized for the solution. Using Java version 11 for the backend, and HTML, CSS, and Bootstrap for the front end. This will allow for freedom of design while also minimizing the time required for front end development. We also used mySQL database to store information to ensure an easier transition to Cloud hosting. Maven will be used as a management tool due to the ease of use.
+## I decided to use the Spring Boot framework for this project. Using Java version 11 for the backend, bootstrap and custom CSS the front end. This will allow for freedom of design while also minimizing the time required for front end development. We also used mySQL database to store information to ensure an easier transition to Cloud Hosting. Maven will be used as a management tool due to the ease of use.
 
 
 
