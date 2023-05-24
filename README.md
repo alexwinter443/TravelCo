@@ -34,7 +34,7 @@
 
 ### enhance security
 
-# Vacation Co. is built using Java, Spring Boot, Thymelead, and CSS
+# Vacation Co. is built using Java, Spring Boot, Thymeleaf, and CSS
 
 > I wanted to incorporate a front end framework but due to time constraints was limited in implementing it.
 
