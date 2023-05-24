@@ -20,14 +20,14 @@
 
 ## Functional Requirements set for Vacation Co.
 
-### Users can login and register
+### 1. Users can login and register
 
-### Admin can create, read, update, delete vacation packages
+### 2. Admin can create, read, update, delete vacation packages
 
-### Users can view vacation packages
+### 3. Users can view vacation packages
 
-### Users can search for vacation packages
+### 4. Users can search for vacation packages
 
-### Vacation packages 
+### 5. Vacation packages 
 
 
