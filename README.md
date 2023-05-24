@@ -28,8 +28,6 @@
 
 ### 4. Users can search for vacation packages
 
-### 5. Vacation packages 
-
 ## Non-functional requirements for Vacation Co.
 
 ### user friendly and modern design
