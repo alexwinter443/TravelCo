@@ -50,14 +50,14 @@
 ![image](https://github.com/alexwinter443/TravelCo/assets/59127575/42901d7a-7ea3-4a5f-91bd-91df97db87fe)
 
 
-# Key Technical Design Decisions
+## Key Technical Design Decisions
 
-## I decided to use the Spring Boot framework for this project. Using Java version 11 for the backend, bootstrap and custom CSS the front end. This will allow for freedom of design while also minimizing the time required for front end development. We also used MySQL database to store information and allow for easier migration to Cloud Hosting. Maven will be used as a management tool due to the ease of use.
+### I decided to use the Spring Boot framework for this project. Using Java version 11 for the backend, bootstrap and custom CSS the front end. This will allow for freedom of design while also minimizing the time required for front end development. We also used MySQL database to store information and allow for easier migration to Cloud Hosting. Maven will be used as a management tool due to the ease of use.
 
 
-# What I learned
+## What I learned
 
-##
+### 
 
 
 
